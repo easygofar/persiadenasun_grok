@@ -29,13 +29,6 @@ const style: Record<
     imgBox: "h-52 md:h-44",
     unit: "محصول",
   },
-  orox: {
-    card: "bg-paper-2 text-ink-900 border border-ink-900/10",
-    muted: "text-ink-900/70",
-    span: "md:col-span-2",
-    imgBox: "h-52",
-    unit: "محصول",
-  },
   arshid: {
     card: "bg-brand-100 text-ink-900",
     muted: "text-ink-900/75",
@@ -46,7 +39,7 @@ const style: Record<
 };
 
 export default function BrandsBento() {
-  const order: BrandSlug[] = ["ricoma", "siruba", "oshima", "orox", "arshid"];
+  const order: BrandSlug[] = ["ricoma", "siruba", "oshima", "arshid"];
 
   return (
     <section

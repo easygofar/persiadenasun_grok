@@ -96,9 +96,6 @@ export default function EnglishMenu() {
                             <li className="border-b pb-2 text-center hover:text-blue-700 border-gray-300">
                                 <Link href="/en/products/siruba">Siruba</Link>
                             </li>
-                            <li className="border-b pb-2 text-center hover:text-blue-700 border-gray-300">
-                                <Link href="/en/products/orox">Orox</Link>
-                            </li>
                             <li className="pb-0 text-center hover:text-blue-700">
                                 <Link href="/en/products/arshid">Fabrics</Link>
                             </li>
@@ -278,9 +275,6 @@ export default function EnglishMenu() {
                                             </li>
                                             <li>
                                                 <MenuLink href="/en/products/siruba/">Siruba</MenuLink>
-                                            </li>
-                                            <li>
-                                                <MenuLink href="/en/products/orox/">Orox</MenuLink>
                                             </li>
                                             <li>
                                                 <MenuLink href="/en/products/arshid/">Fabrics</MenuLink>

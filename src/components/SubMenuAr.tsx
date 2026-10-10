@@ -18,8 +18,7 @@ export default function SubMenuAr(props: { item: string }) {
                 <MenuLink href="oshima" selected={1}>Oshima</MenuLink>
                 <MenuLink href="ricoma" selected={2}>Ricoma</MenuLink>
                 <MenuLink href="siruba" selected={4}>Siruba</MenuLink>
-                <MenuLink href="orox" selected={5}>Orox</MenuLink>
-                <MenuLink href="arshid" selected={6}>Fabrics</MenuLink>
+                <MenuLink href="arshid" selected={5}>Fabrics</MenuLink>
             </ul>
         </nav>
     );

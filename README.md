@@ -1,7 +1,7 @@
 # persiadenasun.ir — Persian site (Next.js 16 + Tailwind CSS 4)
 
 B2B website of **Persia Dena Sun PLC** (پرشیا دنا سان): official representative of
-Oshima, Ricoma, Siruba and Orox, and producer of Arshid fabrics.
+Oshima, Ricoma, Siruba, and producer of Arshid fabrics.
 
 ## Run
 

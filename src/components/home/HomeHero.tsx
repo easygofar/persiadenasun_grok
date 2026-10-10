@@ -56,8 +56,7 @@ export default function HomeHero() {
               aria-hidden="true"
               className="pulse-dot size-2 rounded-full bg-brand-500"
             />
-            نمایندگی رسمی <bdi>Oshima</bdi>، <bdi>Ricoma</bdi>،{" "}
-            <bdi>Siruba</bdi> و <bdi>Orox</bdi>
+            نمایندگی رسمی <bdi>Oshima</bdi>، <bdi>Ricoma</bdi> و <bdi>Siruba</bdi>
           </p>
 
           <h1 id="hero-title" className="display mt-6">

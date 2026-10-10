@@ -110,9 +110,6 @@ export default function ArabicMenu() {
                             <li className="border-b pb-2 hover:text-blue-700 border-gray-300">
                                 <Link href="/ar/products/siruba">سيروبا Siruba</Link>
                             </li>
-                            <li className="border-b pb-2 hover:text-blue-700 border-gray-300">
-                                <Link href="/ar/products/orox">أوروكس Orox</Link>
-                            </li>
                             <li className="pb-0 hover:text-blue-700">
                                 <Link href="/ar/products/arshid">الأقمشة Fabrics</Link>
                             </li>
@@ -258,7 +255,6 @@ export default function ArabicMenu() {
                                             <MenuLink href="/ar/products/oshima">أوشيما</MenuLink>
                                             <MenuLink href="/ar/products/ricoma">ريكوما</MenuLink>
                                             <MenuLink href="/ar/products/siruba">سيروبا</MenuLink>
-                                            <MenuLink href="/ar/products/orox">أوروكس</MenuLink>
                                             <MenuLink href="/ar/products/arshid">الأقمشة</MenuLink>
                                         </ul>
                                     )}

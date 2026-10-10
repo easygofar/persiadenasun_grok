@@ -6,7 +6,7 @@ export const SITE = {
   nameEn: "Persia Dena Sun",
   slogan: "نیم قرن تأمین ماشین‌آلات نساجی و چرخ خیاطی صنعتی",
   description:
-    "پرشیا دنا سان تأمین‌کننده تخصصی ماشین‌آلات نساجی و چرخ خیاطی صنعتی در ایران است؛ نمایندگی رسمی اوشیما، سیروبا، ریکوما و اوروکس، همراه با تولید پارچه‌های گردباف آرشید، مشاوره، نصب و پشتیبانی فنی.",
+    "پرشیا دنا سان تأمین‌کننده تخصصی ماشین‌آلات نساجی و چرخ خیاطی صنعتی در ایران است؛ نمایندگی رسمی اوشیما، سیروبا و ریکوما همراه با تولید پارچه‌های گردباف آرشید، مشاوره، نصب و پشتیبانی فنی.",
   phoneDisplay: "021-63414",
   phoneIntl: "+98-21-63414",
   mobileDisplay: "09101818197",
@@ -69,7 +69,7 @@ export const jalaliYear = (date = new Date()) => {
   return y - (beforeNowruz ? 622 : 621);
 };
 
-export type BrandSlug = "oshima" | "ricoma" | "siruba" | "orox" | "arshid";
+export type BrandSlug = "oshima" | "ricoma" | "siruba" | "arshid";
 
 export interface Brand {
   slug: BrandSlug;
@@ -118,16 +118,6 @@ export const BRANDS: Brand[] = [
     imageAlt: "دستگاه گلدوزی صنعتی ریکوما",
   },
   {
-    slug: "orox",
-    dataName: "Orox",
-    name: "Orox",
-    fa: "اوروکس",
-    headline: "فناوری ایتالیایی برش",
-    blurb: "دستگاه برش و تجهیزات آماده‌سازی پارچه با فناوری ایتالیایی اوروکس.",
-    image: "/images/hero/orox.webp",
-    imageAlt: "دستگاه برش اوروکس",
-  },
-  {
     slug: "arshid",
     dataName: "Arshid",
     name: "Arshid",
@@ -146,7 +136,7 @@ export const brandBySlug = (slug: BrandSlug) =>
 export const FAQ: { q: string; a: string }[] = [
   {
     q: "پرشیا دنا سان چه برندها و محصولاتی ارائه می‌کند؟",
-    a: "پرشیا دنا سان نماینده رسمی Oshima، Ricoma، Siruba و Orox است. چرخ خیاطی صنعتی، ماشین گلدوزی، دستگاه پهن‌کن و برش، پرس و تجهیزات کنترل کیفیت از جمله محصولات است. پارچه گردباف تخصصی هم با برند آرشید تولید می‌شود.",
+    a: "پرشیا دنا سان نماینده رسمی Oshima، Ricoma و Siruba است. چرخ خیاطی صنعتی، ماشین گلدوزی، دستگاه پهن‌کن و برش، پرس و تجهیزات کنترل کیفیت از جمله محصولات است. پارچه گردباف تخصصی هم با برند آرشید تولید می‌شود.",
   },
   {
     q: "آیا برای راه‌اندازی کارخانه یا کارگاه پوشاک مشاوره می‌دهید؟",

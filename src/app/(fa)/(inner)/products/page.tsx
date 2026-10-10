@@ -6,7 +6,7 @@ import { products } from "@/data";
 export const metadata: Metadata = {
   title: { absolute: "محصولات پرشیا دنا سان | ماشین‌آلات نساجی و چرخ خیاطی صنعتی" },
   description:
-    "کاتالوگ چرخ خیاطی صنعتی سیروبا، ماشین گلدوزی ریکوما، تجهیزات اوشیما، دستگاه برش اوروکس و پارچه گردباف آرشید در پرشیا دنا سان.",
+    "کاتالوگ چرخ خیاطی صنعتی سیروبا، ماشین گلدوزی ریکوما، تجهیزات اوشیما، دستگاه برش و پارچه گردباف آرشید در پرشیا دنا سان.",
   alternates: {
     canonical: "/products/",
     languages: { "fa-IR": "/products/", "x-default": "/products/" },
@@ -48,7 +48,7 @@ export default function ProductsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <CatalogBrowser
         title="محصولات پرشیا دنا سان"
-        lede="چرخ‌های خیاطی صنعتی سیروبا، ماشین‌های گلدوزی ریکوما، تجهیزات اوشیما، دستگاه برش اوروکس و پارچه‌های گردباف آرشید"
+        lede="چرخ‌های خیاطی صنعتی سیروبا، ماشین‌های گلدوزی ریکوما، تجهیزات اوشیما، دستگاه برش و پارچه‌های گردباف آرشید"
       />
     </>
   );

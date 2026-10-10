@@ -19,7 +19,6 @@ export default function SubMenu(props: { item: string }) {
         <MenuLink href="oshima" selected={1} >اوشیما</MenuLink>
         <MenuLink href="ricoma" selected={2} >ریکوما</MenuLink>
         <MenuLink href="siruba" selected={4} >سیروبا</MenuLink>
-        <MenuLink href="orox" selected={5} >اوروکس</MenuLink>
         <MenuLink href="arshid" selected={6} >پارچه</MenuLink>
       </ul>
     </nav>

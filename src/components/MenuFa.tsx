@@ -93,9 +93,6 @@ export default function PersianMenu() {
                                 <Link href="/products/siruba">سیروبا Siruba</Link>
                             </li>
                             <li className="border-b pb-2 text-center hover:text-blue-700 border-gray-300">
-                                <Link href="/products/orox">اوروکس Orox</Link>
-                            </li>
-                            <li className="border-b pb-2 text-center hover:text-blue-700 border-gray-300">
                                 <Link href="/products/arshid">پارچه Fabric</Link>
                             </li>
                             <li className="border-b pb-2 text-center hover:text-blue-700 border-gray-300">
@@ -275,9 +272,6 @@ export default function PersianMenu() {
                                             </li>
                                             <li>
                                                 <MenuLink href="/products/siruba/">سیروبا</MenuLink>
-                                            </li>
-                                            <li>
-                                                <MenuLink href="/products/orox/">اوروکس</MenuLink>
                                             </li>
                                             <li>
                                                 <MenuLink href="/products/arshid/">پارچه</MenuLink>
