@@ -163,7 +163,7 @@ summary:focus-visible {
 
 /* Hero section */
 .hero-image {
-  background-image: url('/images/hero/hero-image-01.png');
+  background-image: url('/images/hero/hero-image-01.webp');
   background-size: cover;
   background-position: center;
 }

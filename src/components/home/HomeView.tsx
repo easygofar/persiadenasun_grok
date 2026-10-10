@@ -120,7 +120,7 @@ export default function HomeView() {
 
             <div className="overflow-hidden rounded-[28px] shadow-2xl">
               {/* <img
-                src="/images/hero/hero-image-01.png"
+                src="/images/hero/hero-image-01.webp"
                 alt="دستگاه گلدوزی صنعتی ریکوما مدل TC-1501-8S"
                 width={900}
                 height={700}
