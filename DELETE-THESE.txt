@@ -1,0 +1,12 @@
+Files removed by the redesign (delete them if you copy the zip over your repo instead of applying the patch):
+
+src/app/site.webmanifest        (replaced by src/app/manifest.ts)
+src/components/Slider.tsx       (home hero replaced the slider)
+src/app/(fa)/page.tsx           (moved to src/app/(fa)/(home)/page.tsx)
+src/app/(fa)/about-us/          (moved into src/app/(fa)/(inner)/)
+src/app/(fa)/contact-us/        (moved into src/app/(fa)/(inner)/)
+src/app/(fa)/products/          (moved into src/app/(fa)/(inner)/)
+src/app/favicon-16x16.png, favicon-32x32.png, apple-touch-icon.png,
+src/app/android-chrome-192x192.png, android-chrome-512x512.png   (moved to public/)
+
+Then run:  npm install   (package.json changed, so package-lock.json must be refreshed)
