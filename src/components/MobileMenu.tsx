@@ -48,7 +48,7 @@ export default function MobileMenu() {
             </button>
           </div>
           <nav className="px-4" aria-label="منوی موبایل">
-            <ul className="flex flex-col gap-1">
+            <ul className="flex flex-col">
               {[
                 ["/", "خانه"],
                 ["/products/", "محصولات"],
@@ -56,11 +56,11 @@ export default function MobileMenu() {
                 ["/contact-us/", "تماس با ما"],
                 ["/products/video/", "ویدیوها"],
               ].map(([href, label]) => (
-                <li key={href}>
+                <li key={href} className="mt-1 border-b border-white/15">
                   <Link
                     href={href}
                     onClick={close}
-                    className="block rounded-xl px-3 py-3 text-lg"
+                    className="block rounded-xl px-3 py-1 text-lg"
                   >
                     {label}
                   </Link>
@@ -70,7 +70,7 @@ export default function MobileMenu() {
             <p className="mt-4 px-3 text-sm text-white/50">برندها</p>
             <ul className="mt-1">
               {BRANDS.map((b) => (
-                <li key={b.slug}>
+                <li key={b.slug} className="mt-1 border-b border-white/15">
                   <Link
                     href={`/products/${b.slug}/`}
                     onClick={close}
