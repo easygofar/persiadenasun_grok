@@ -87,7 +87,7 @@ export default function HomeView() {
           aria-hidden="true"
         />
         <div className="wrap grid items-center gap-10 py-14 lg:grid-cols-2 sm:py-20">
-          <div>
+          <div className="relative z-10">
             <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm text-white/85">
               <span className="size-1.5 rounded-full bg-brand" aria-hidden="true" />
               نیم قرن تجربه در صنعت نساجی ایران
@@ -110,23 +110,36 @@ export default function HomeView() {
               <Link href="/contact-us/" className="btn btn-ghost">
                 مشاوره رایگان
               </Link>
+              {/* <div className="absolute grid -m-4 -ml-10 w-[230px] grid-cols-2 gap-x-3 gap-y-2 rounded-2xl bg-navy/80 p-4 text-center shadow-xl ring-1 ring-white/10 sm:left-0 sm:w-[260px]">
+                <span style={{ color: "#CCAA55" }}>
+                  <Stat value={`+${total}`} label="محصول موجود" />
+                </span>
+                <Stat value="+۵۰" label="سال تجربه" />
+                <Stat value="٪۹۸" label="کارخانه تجهیزشده" />
+                <Stat value="+۵۰۰" label="رضایت مشتریان" />
+              </div> */}
+
             </div>
           </div>
 
-          <div className="relative grid-cols-1 lg:grid-cols-2 pb-6 lg:pb-2 hero-image  h-100  rounded-[28px] shadow-2xl">
-            <div className="absolute inset-0 bg-black/10" aria-hidden="true"></div>
-
-            {/* <div className="overflow-hidden rounded-[28px] bg-gradient-to-br  from-[#2b7fff] via-[#3d8dff] to-[#8ec5ff] p-4 shadow-2xl sm:p-6"> */}
-
-            <div className="overflow-hidden rounded-[28px] shadow-2xl">
-              {/* <img
-                src="/images/hero/hero-image-01.webp"
+          <div className="relative grid-cols-1 lg:grid-cols-2 md:mb-4 mb-0 lg:pb-2">
+            <div className="grid grid-cols-1">
+              <img
+                src="/images/hero/hero-section.webp"
                 alt="دستگاه گلدوزی صنعتی ریکوما مدل TC-1501-8S"
-                width={900}
-                height={700}
-                className="mx-auto h-auto max-h-[360px] w-full object-contain"
+                // width={1100}
+                // height={700}
+                className="mx-auto h-auto md:max-h-150 sm:max-h-120 max-h-100 w-full object-contain"
                 fetchPriority="high"
-              /> */}
+              />
+              <img
+                src="/images/hero/barnd-logos.png"
+                alt="سه لوگوی اوشیما، سیروبا و ریکوما به عنوان نمایندگی رسمی برندها"
+                // width={1100}
+                // height={700}
+                className="mx-auto h-auto md:max-h-150 sm:max-h-120 max-h-100 w-full object-contain"
+                fetchPriority="high"
+              />
               {/* <p className="absolute bottom-6 right-6 rounded-xl bg-navy/80 px-3 py-2 text-xs leading-6 backdrop-blur sm:text-sm">
                 <span className="font-semibold" dir="ltr">
                   Ricoma TC-1501-8S
@@ -135,12 +148,6 @@ export default function HomeView() {
                   دستگاه گلدوزی صنعتی ریکوما
                 </span>
               </p> */}
-            </div>
-            <div className="absolute -bottom-6 left-3 grid w-[230px] grid-cols-2 gap-x-3 gap-y-2 rounded-2xl bg-navy-2/95 p-4 text-center shadow-xl ring-1 ring-white/10 sm:left-0 sm:w-[260px]">
-              <span style={{ color: "#CCAA55" }}><Stat value={`+${total}`} label="محصول موجود" /></span>
-              <Stat value="+۵۰" label="سال تجربه" />
-              {/* <Stat value="٪۹۸" label="کارخانه تجهیزشده" />
-              <Stat value="+۵۰۰" label="رضایت مشتریان" /> */}
             </div>
           </div>
         </div>
@@ -202,7 +209,7 @@ export default function HomeView() {
           >
             پرشیا دنا سان ارائه‌دهنده بهترین محصولات و خدمات صنعت پوشاک
           </h2>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+          <div className="mt-10 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {BRANDS.map((b) => (
               <article key={b.slug} className="card relative flex flex-col p-4">
                 {/* <span
