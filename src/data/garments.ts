@@ -1,0 +1,59 @@
+export type Garment = {
+  code: string;
+  type: string;
+  material: string;
+  use: string;
+  width: string; // cm or "—"
+  weight: string; // m/kg or "—"
+  color: string;
+  image: string | null; // path or null
+};
+
+export const garments: Garment[] = [
+  { code: "201", type: "بافت دورو طرح‌دار", material: "پلی‌استر پنبه", use: "پاییز / زمستان", width: "—", weight: "—", color: "—", image: "/images/garments/th_201.jpg" },
+  { code: "202", type: "ژاکارد دورو", material: "پلی‌استر پنبه", use: "—", width: "—", weight: "—", color: "سفید", image: "/images/garments/th_202.jpg" },
+  { code: "203", type: "ژاکارد دورو", material: "پلی‌استر ویسکوز", use: "تی‌شرتی", width: "—", weight: "—", color: "ملانژ", image: "/images/garments/th_203.jpg" },
+  { code: "204", type: "ژاکارد دورو", material: "پلی‌استر پنبه", use: "تی‌شرتی", width: "—", weight: "—", color: "—", image: "/images/garments/th_204.jpg" },
+  { code: "205", type: "ژاکارد بافت درشت", material: "پلی‌استر پنبه", use: "—", width: "۱۶۰", weight: "۱/۵", color: "—", image: "/images/garments/th_205.jpg" },
+  { code: "206", type: "ژاکارد بافت درشت", material: "پلی‌استر پنبه", use: "—", width: "۱۶۰", weight: "۱/۵", color: "—", image: "/images/garments/th_206.jpg" },
+  { code: "207", type: "ژاکارد بافت درشت", material: "پلی‌استر پنبه", use: "—", width: "۱۶۰", weight: "۱/۵", color: "—", image: "/images/garments/th_207.jpg" },
+  { code: "208", type: "ژاکارد بافت درشت", material: "پلی‌استر پنبه", use: "—", width: "۱۶۰", weight: "۱/۵", color: "—", image: "/images/garments/th_208.jpg" },
+  { code: "209", type: "ژاکارد بافت درشت", material: "پلی‌استر پنبه", use: "—", width: "۱۶۰", weight: "۱/۵", color: "—", image: "/images/garments/th_209.jpg" },
+  { code: "210", type: "ژاکارد بافت درشت", material: "پلی‌استر پنبه", use: "—", width: "۱۶۰", weight: "۱/۵", color: "—", image: "/images/garments/th_210.jpg" },
+  { code: "211", type: "ژاکارد بافت درشت", material: "پلی‌استر پنبه", use: "—", width: "۱۶۰", weight: "۱/۵", color: "—", image: "/images/garments/th_211.jpg" },
+  { code: "212", type: "ژاکارد دورو", material: "پلی‌استر پنبه", use: "تی‌شرتی / پاییزه", width: "۱۶۰", weight: "—", color: "سفید کرم", image: "/images/garments/th_212.jpg" },
+  { code: "213", type: "ژاکارد دورو", material: "پلی‌استر پنبه", use: "شلوارک", width: "۱۶۰", weight: "—", color: "کرم", image: "/images/garments/th_213.jpg" },
+  { code: "214", type: "ژاکارد دورو", material: "پلی‌استر پنبه", use: "شلوار / پاییزه", width: "—", weight: "—", color: "مشکی", image: "/images/garments/th_214.jpg" },
+  { code: "215", type: "ژاکارد دورو", material: "پلی‌استر پنبه", use: "تی‌شرتی", width: "—", weight: "—", color: "بنفش", image: "/images/garments/th_215.jpg" },
+  { code: "216", type: "ژاکارد دورو", material: "پلی‌استر پنبه", use: "تی‌شرتی", width: "—", weight: "—", color: "سبز", image: "/images/garments/th_216.jpg" },
+  { code: "217", type: "ژاکارد دورو", material: "پلی‌استر پنبه", use: "پیراهن مردانه (چهارفصل)", width: "۱۶۰", weight: "—", color: "—", image: "/images/garments/th_217.jpg" },
+  { code: "218", type: "ژاکارد یکرو", material: "پلی‌استر پنبه", use: "تی‌شرتی", width: "—", weight: "—", color: "ملانژ", image: "/images/garments/th_218.jpg" },
+  { code: "219", type: "ژاکارد یکرو", material: "پلی‌استر پنبه", use: "تی‌شرتی مردانه", width: "—", weight: "۳/۸۰", color: "—", image: "/images/garments/th_219.jpg" },
+  { code: "220", type: "دورو طرح‌دار", material: "پلی‌استر پنبه", use: "تاپ و شلوارک (چهارفصل)", width: "۱۷۰", weight: "—", color: "مشکی", image: "/images/garments/th_220.jpg" },
+  { code: "221", type: "دورو طرح‌دار", material: "پلی‌استر پنبه", use: "تاپ و شلوارک (چهارفصل)", width: "۱۷۰", weight: "—", color: "سبز", image: "/images/garments/th_221.jpg" },
+  { code: "222", type: "دورو طرح‌دار", material: "پلی‌استر پنبه", use: "تاپ و شلوارک (چهارفصل)", width: "۱۷۰", weight: "—", color: "کرم", image: "/images/garments/th_222.jpg" },
+  { code: "223", type: "ژاکارد دورو", material: "پلی‌استر ویسکوز", use: "تی‌شرتی", width: "—", weight: "—", color: "سفید", image: "/images/garments/th_223.jpg" },
+  { code: "224", type: "ژاکارد دورو", material: "پلی‌استر ویسکوز", use: "تی‌شرتی", width: "—", weight: "—", color: "سفید", image: "/images/garments/th_224.png" },
+  { code: "225", type: "پارچه دورو", material: "۱۰۰٪ پلی‌استر", use: "پیراهنی و مانتویی", width: "۱۶۰", weight: "۳", color: "—", image: "/images/garments/th_225.jpg" },
+  { code: "226", type: "ژاکارد دورو", material: "پلی‌استر ویسکوز", use: "تی‌شرتی", width: "—", weight: "—", color: "خام", image: "/images/garments/th_226.jpg" },
+  { code: "227", type: "ژاکارد دورو", material: "پلی‌استر پنبه", use: "تی‌شرتی", width: "—", weight: "—", color: "سفید", image: "/images/garments/th_227.jpg" },
+  { code: "228", type: "ژاکارد دورو", material: "پلی‌استر پنبه", use: "تی‌شرتی", width: "—", weight: "—", color: "سفید", image: "/images/garments/th_228.jpg" },
+  { code: "229", type: "پارچه دورو", material: "۱۰۰٪ پلی‌استر", use: "—", width: "۱۶۰", weight: "—", color: "—", image: "/images/garments/th_229.jpg" },
+  { code: "230", type: "توری آستری", material: "پلی‌استر", use: "آستری", width: "۱۶۰", weight: "—", color: "سفید", image: "/images/garments/th_230.jpg" },
+  { code: "231", type: "بافت ژاکارد دورو", material: "پلی‌استر ویسکوز", use: "—", width: "۱۵۰", weight: "۴", color: "—", image: "/images/garments/th_231.jpg" },
+  { code: "232", type: "ژاکارد دورو (لوزی)", material: "پلی‌استر پنبه", use: "تی‌شرتی", width: "—", weight: "—", color: "سفید", image: "/images/garments/th_232.jpg" },
+  { code: "233", type: "ژاکارد دورو (لوزی)", material: "پلی‌استر پنبه", use: "تی‌شرتی", width: "—", weight: "—", color: "سبز", image: null },
+  { code: "234", type: "ژاکارد دورو (ساده)", material: "پلی‌استر پنبه", use: "تی‌شرتی", width: "—", weight: "—", color: "سبز", image: "/images/garments/th_234.jpg" },
+  { code: "235", type: "بافت دورو طرح‌دار", material: "پلی‌استر پنبه", use: "پاییز / زمستان", width: "۱۸۰", weight: "—", color: "مشکی", image: "/images/garments/th_235.jpg" },
+  { code: "236", type: "بافت دورو طرح‌دار", material: "پلی‌استر پنبه", use: "پاییز / زمستان", width: "۱۸۰", weight: "—", color: "سبز", image: "/images/garments/th_236.jpg" },
+  { code: "237", type: "بافت دورو طرح‌دار", material: "پلی‌استر پنبه", use: "پاییز / زمستان", width: "۱۸۰", weight: "—", color: "قهوه‌ای", image: "/images/garments/th_237.jpg" },
+  { code: "238", type: "بافت دورو طرح‌دار", material: "پلی‌استر پنبه", use: "پاییز / زمستان", width: "۱۸۰", weight: "—", color: "کرم", image: "/images/garments/th_238.jpg" },
+  { code: "239", type: "بافت دورو طرح‌دار", material: "پلی‌استر پنبه", use: "پاییز / زمستان", width: "۱۸۰", weight: "—", color: "مشکی", image: "/images/garments/th_239.jpg" },
+  { code: "240", type: "دورو طرح‌دار توری", material: "پلی‌استر پنبه", use: "پاییز / زمستان", width: "—", weight: "—", color: "مشکی", image: "/images/garments/th_240.jpg" },
+  { code: "241", type: "دورو طرح‌دار توری", material: "پلی‌استر پنبه", use: "پاییز / زمستان", width: "—", weight: "—", color: "سرمه‌ای", image: "/images/garments/th_241.jpg" },
+  { code: "242", type: "دورو طرح‌دار توری", material: "پلی‌استر پنبه", use: "پاییز / زمستان", width: "—", weight: "—", color: "سبز", image: "/images/garments/th_242.jpg" },
+  { code: "243", type: "یکرو کج‌راه", material: "پلی‌استر پنبه", use: "شلواری", width: "—", weight: "—", color: "سرمه‌ای (استوک ۳۰۰)", image: "/images/garments/th_243.jpg" },
+  { code: "244", type: "ژاکارد دورو", material: "پلی‌استر ویسکوز", use: "پیراهن مردانه", width: "—", weight: "—", color: "آبی", image: "/images/garments/th_244.jpg" },
+  { code: "245", type: "ژاکارد دورو", material: "پلی‌استر ویسکوز", use: "پیراهن مردانه", width: "—", weight: "—", color: "مشکی", image: "/images/garments/th_245.jpg" },
+  { code: "246", type: "ژاکارد دورو", material: "پلی‌استر", use: "تی‌شرتی", width: "۱۶۰", weight: "—", color: "سفید", image: "/images/garments/th_246.jpg" },
+];
