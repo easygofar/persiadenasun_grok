@@ -56,7 +56,7 @@ export default function GarmentCatalog() {
       <PageHero
         kicker={`کاتالوگ پارچه‌های آرشید (${toFa(garments.length)} کد)`}
         title="پارچه‌ها و انواع البسه آرشید"
-        lede="جستجو و مشاهده مشخصات ۴۶ کد پارچه گردباف آرشید (کدهای ۲۰۱ تا ۲۴۶) با نمایش کارتی یا جدولی. با کلیک روی هر مورد تصویر بزرگ‌تر و جزئیات بیشتر را ببینید."
+        lede="پارچه‌های برند آرشید، انتخابی ممتاز برای کیفیت و طرح‌های جذاب می‌باشند. با انواع مدل‌ها، دوختی خاص و متمایز خواهید داشت. کیفیت و زیبایی را با پارچه‌های آرشید تجربه کنید. برای دیدن تصاویر بزرگ‌تر و جزئیات بیشتر، روی هر مورد کلیک کنید."
       />
 
       <section className="bg-paper py-8">
@@ -199,14 +199,14 @@ export default function GarmentCatalog() {
 
             <div className="relative mb-4 flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl border border-gray-300"
 
-              style={bgSrc ? { backgroundImage: `url(${mainSrc})` } : undefined}
+              style={bgSrc ? { backgroundImage: `url(${mainSrc})`, opacity: 1, transition: "all 0.4s ease" } : undefined}
             >
               {mainSrc && (
                 <img
                   src={mainSrc}
                   alt={`تصویر بزرگ پارچه کد ${toPersianDigits(selected.code)}`}
                   className="max-h-full max-w-full object-contain"
-                  style={bgSrc ? { width: 0, height: 0 } : undefined}
+                  style={bgSrc ? { opacity: 0, transition: "all 0.4s ease" } : undefined}
                 />
               )}
               {/* //  : (
@@ -236,24 +236,24 @@ export default function GarmentCatalog() {
 
             <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
               <div>
-                <dt className="text-muted">جنس</dt>
-                <dd className="font-medium">{selected.material}</dd>
+                <dt className="font-medium">جنس</dt>
+                <dd className="text-muted">{selected.material}</dd>
               </div>
               <div>
-                <dt className="text-muted">کاربرد / فصل</dt>
-                <dd className="font-medium">{selected.use}</dd>
+                <dt className="font-medium">کاربرد / فصل</dt>
+                <dd className="text-muted">{selected.use}</dd>
               </div>
               <div>
-                <dt className="text-muted">عرض</dt>
-                <dd className="font-medium">{selected.width === "—" ? "—" : `${selected.width} سانت`}</dd>
+                <dt className="font-medium">عرض</dt>
+                <dd className="text-muted">{selected.width === "—" ? "—" : `${selected.width} سانت`}</dd>
               </div>
               <div>
-                <dt className="text-muted">وزن</dt>
-                <dd className="font-medium">{selected.weight === "—" ? "—" : `${selected.weight} م/کیلو`}</dd>
+                <dt className="font-medium">وزن</dt>
+                <dd className="text-muted">{selected.weight === "—" ? "—" : `${selected.weight} م/کیلو`}</dd>
               </div>
               <div className="col-span-2">
-                <dt className="text-muted">رنگ</dt>
-                <dd className="font-medium">{selected.color}</dd>
+                <dt className="font-medium">رنگ</dt>
+                <dd className="text-muted">{selected.color}</dd>
               </div>
             </dl>
           </div>
