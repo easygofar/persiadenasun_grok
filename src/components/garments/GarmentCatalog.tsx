@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search, LayoutGrid, Table as TableIcon, X } from "lucide-react";
+import { Search, LayoutGrid, Table as TableIcon, X, Filter } from "lucide-react";
 import { garments, type Garment } from "@/data/garments";
 import PageHero from "@/components/PageHero";
 import { toFa } from "@/lib/site";
@@ -16,47 +16,44 @@ function mediumImage(code: string) {
   return `/images/garments/mth_${code}.jpg`;
 }
 
+const ALL_TYPES = Array.from(new Set(garments.map((g) => g.type))).sort();
+const ALL_MATERIALS = Array.from(new Set(garments.map((g) => g.material))).sort();
+
 export default function GarmentCatalog() {
   const [q, setQ] = useState("");
   const [view, setView] = useState<View>("cards");
   const [selected, setSelected] = useState<Garment | null>(null);
   const [mainSrc, setMainSrc] = useState<string>("");
-  const [bgSrc, setBgSrc] = useState<boolean>(false);
+  const [typeFilter, setTypeFilter] = useState<string>("");
+  const [materialFilter, setMaterialFilter] = useState<string>("");
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const filtered = useMemo(() => {
     const query = q.trim().toLowerCase();
-    if (!query) return garments;
     return garments.filter((g) => {
+      if (typeFilter && g.type !== typeFilter) return false;
+      if (materialFilter && g.material !== materialFilter) return false;
+      if (!query) return true;
       const hay = `${g.code} ${g.type} ${g.material} ${g.use} ${g.color} ${g.width} ${g.weight}`.toLowerCase();
       return hay.includes(query);
     });
-  }, [q]);
+  }, [q, typeFilter, materialFilter]);
+
+  const activeFilters = [typeFilter, materialFilter].filter(Boolean).length;
 
   function openModal(g: Garment) {
     setSelected(g);
     setMainSrc(g.image ? mediumImage(g.code) : "");
   }
 
-  function onBgSrc(value: boolean) {
-    setBgSrc(value);
-    // if (value && selected) {
-    //   setMainSrc("");
-    // } else if (!value && selected) {
-    //   setMainSrc(mediumImage(selected.code));
-    // }
-  }
-  function onClickBgSrc(value: boolean) {
-    setBgSrc(!value);
-    // if (value && selected) {
-    //   setMainSrc("");
-    // } else if (!value && selected) {
-    //   setMainSrc(mediumImage(selected.code));
-    // }
-  }
-
   function closeModal() {
     setSelected(null);
     setMainSrc("");
+  }
+
+  function clearFilters() {
+    setTypeFilter("");
+    setMaterialFilter("");
   }
 
   return (
@@ -67,57 +64,143 @@ export default function GarmentCatalog() {
         lede="پارچه‌های برند آرشید، انتخابی ممتاز برای کیفیت و طرح‌های جذاب می‌باشند. با انواع مدل‌ها، دوختی خاص و متمایز خواهید داشت. کیفیت و زیبایی را با پارچه‌های آرشید تجربه کنید. برای دیدن تصاویر بزرگ‌تر و جزئیات بیشتر، روی هر مورد کلیک کنید."
       />
 
-      <section className="bg-paper py-8">
+      <section className="bg-paper py-6 sm:py-8">
         <div className="wrap">
-          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="relative max-w-md flex-1">
-              <Search className="absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted" />
-              <input
-                type="search"
-                value={q}
-                onChange={(e) => setQ(e.target.value)}
-                placeholder="جستجو بر اساس کد، نوع، جنس، کاربرد یا رنگ…"
-                className="w-full rounded-xl border border-line bg-white py-2.5 pr-10 pl-4 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
-                aria-label="جستجوی پارچه"
-              />
-            </div>
+          <div className="sticky top-0 z-40 -mx-4 mb-4 bg-paper/95 px-4 py-3 backdrop-blur sm:static sm:mx-0 sm:bg-transparent sm:p-0 sm:backdrop-blur-none">
+            <div className="flex flex-col gap-3">
+              <div className="relative">
+                <Search className="absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted" />
+                <input
+                  type="search"
+                  value={q}
+                  onChange={(e) => setQ(e.target.value)}
+                  placeholder="جستجو بر اساس کد، نوع، جنس، کاربرد یا رنگ…"
+                  className="w-full rounded-xl border border-line bg-white py-2.5 pr-10 pl-4 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"
+                  aria-label="جستجوی پارچه"
+                />
+              </div>
 
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-muted">نمایش:</span>
-              <button
-                type="button"
-                onClick={() => setView("cards")}
-                className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition ${view === "cards"
-                  ? "bg-brand text-white"
-                  : "bg-white text-ink border border-line hover:bg-paper"
-                  }`}
-                aria-pressed={view === "cards"}
-              >
-                <LayoutGrid className="size-4" />
-                کارت
-              </button>
-              <button
-                type="button"
-                onClick={() => setView("table")}
-                className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition ${view === "table"
-                  ? "bg-brand text-white"
-                  : "bg-white text-ink border border-line hover:bg-paper"
-                  }`}
-                aria-pressed={view === "table"}
-              >
-                <TableIcon className="size-4" />
-                جدول
-              </button>
+              <div className="flex items-center justify-between gap-2">
+                <button
+                  type="button"
+                  onClick={() => setFiltersOpen((v) => !v)}
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-white px-3 py-2 text-sm font-medium"
+                >
+                  <Filter className="size-4" />
+                  فیلتر
+                  {activeFilters > 0 && (
+                    <span className="rounded-full bg-brand px-1.5 py-0.5 text-[10px] text-white">
+                      {toPersianDigits(activeFilters)}
+                    </span>
+                  )}
+                </button>
+
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => setView("cards")}
+                    className={`inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition ${view === "cards"
+                        ? "bg-brand text-white"
+                        : "bg-white text-ink border border-line"
+                      }`}
+                    aria-pressed={view === "cards"}
+                  >
+                    <LayoutGrid className="size-4" />
+                    <span className="hidden sm:inline">کارت</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setView("table")}
+                    className={`inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition ${view === "table"
+                        ? "bg-brand text-white"
+                        : "bg-white text-ink border border-line"
+                      }`}
+                    aria-pressed={view === "table"}
+                  >
+                    <TableIcon className="size-4" />
+                    <span className="hidden sm:inline">جدول</span>
+                  </button>
+                </div>
+              </div>
+
+              {filtersOpen && (
+                <div className="rounded-xl border border-line bg-white p-3 shadow-sm">
+                  <div className="mb-3 flex items-center justify-between">
+                    <span className="text-sm font-medium">فیلترها</span>
+                    {activeFilters > 0 && (
+                      <button
+                        type="button"
+                        onClick={clearFilters}
+                        className="text-xs text-brand hover:underline"
+                      >
+                        پاک کردن
+                      </button>
+                    )}
+                  </div>
+
+                  <div className="space-y-3">
+                    <div>
+                      <p className="mb-1.5 text-xs text-muted">نوع / بافت</p>
+                      <div className="flex flex-wrap gap-1.5">
+                        <button
+                          type="button"
+                          onClick={() => setTypeFilter("")}
+                          className={`rounded-full px-3 py-1 text-xs ${!typeFilter ? "bg-brand text-white" : "bg-paper text-ink"
+                            }`}
+                        >
+                          همه
+                        </button>
+                        {ALL_TYPES.map((t) => (
+                          <button
+                            key={t}
+                            type="button"
+                            onClick={() => setTypeFilter(t === typeFilter ? "" : t)}
+                            className={`rounded-full px-3 py-1 text-xs ${typeFilter === t ? "bg-brand text-white" : "bg-paper text-ink"
+                              }`}
+                          >
+                            {t}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <p className="mb-1.5 text-xs text-muted">جنس</p>
+                      <div className="flex flex-wrap gap-1.5">
+                        <button
+                          type="button"
+                          onClick={() => setMaterialFilter("")}
+                          className={`rounded-full px-3 py-1 text-xs ${!materialFilter ? "bg-brand text-white" : "bg-paper text-ink"
+                            }`}
+                        >
+                          همه
+                        </button>
+                        {ALL_MATERIALS.map((m) => (
+                          <button
+                            key={m}
+                            type="button"
+                            onClick={() => setMaterialFilter(m === materialFilter ? "" : m)}
+                            className={`rounded-full px-3 py-1 text-xs ${materialFilter === m ? "bg-brand text-white" : "bg-paper text-ink"
+                              }`}
+                          >
+                            {m}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
           <p className="mb-4 text-sm text-muted">
             {toPersianDigits(filtered.length)} نتیجه
-            {q ? ` برای «${q}»` : ""}
+            {(q || activeFilters > 0) && " (فیلتر شده)"}
           </p>
 
           {view === "cards" ? (
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {filtered.map((g) => (
                 <GarmentCard key={g.code} g={g} onOpen={() => openModal(g)} />
               ))}
@@ -170,7 +253,21 @@ export default function GarmentCatalog() {
           )}
 
           {filtered.length === 0 && (
-            <p className="py-12 text-center text-muted">موردی با این جستجو یافت نشد.</p>
+            <div className="py-12 text-center">
+              <p className="text-muted">موردی با این جستجو یا فیلتر یافت نشد.</p>
+              {(q || activeFilters > 0) && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setQ("");
+                    clearFilters();
+                  }}
+                  className="mt-3 text-sm text-brand hover:underline"
+                >
+                  پاک کردن جستجو و فیلترها
+                </button>
+              )}
+            </div>
           )}
         </div>
       </section>
@@ -205,32 +302,25 @@ export default function GarmentCatalog() {
               {selected.use !== "—" ? ` · ${selected.use}` : ""}
             </p>
 
-            <div className="relative mb-4 flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl border border-gray-300"
-
-              style={bgSrc ? { backgroundImage: `url(${mainSrc})`, opacity: 1, transition: "all 0.4s ease" } : undefined}
-            >
-              {mainSrc && (
+            <div className="mb-4 flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl bg-paper">
+              {mainSrc ? (
                 <img
                   src={mainSrc}
                   alt={`تصویر بزرگ پارچه کد ${toPersianDigits(selected.code)}`}
                   className="max-h-full max-w-full object-contain"
-                  style={bgSrc ? { opacity: 0, transition: "all 0.4s ease" } : undefined}
                 />
+              ) : (
+                <span className="text-muted">تصویر موجود نیست</span>
               )}
-              {/* //  : (
-              //   <span className="text-muted">تصویر موجود نیست</span>
-              // )} */}
             </div>
 
             {selected.image && (
               <div className="flex flex-col items-center gap-2">
-                <p className="text-xs text-muted">برای مشاهده تصویر بزرگ‌تر روی این تصویر کلیک کنید</p>
+                <p className="text-xs text-muted">برای مشاهده تصویر بزرگ‌تر روی تصویر کوچک کلیک کنید</p>
                 <button
                   type="button"
-                  onClick={() => onClickBgSrc(bgSrc)}
-                  onMouseEnter={() => onBgSrc(true)}
-                  onMouseLeave={() => onBgSrc(false)}
-                  className="overflow-hidden rounded-lg border-2 border-transparent ring-offset-2 hover:border-brand focus:border-brand focus:outline-none"
+                  onClick={() => setMainSrc(mediumImage(selected.code))}
+                  className="overflow-hidden rounded-lg border-2 border-transparent hover:border-brand focus:border-brand focus:outline-none"
                   aria-label="نمایش تصویر بزرگ"
                 >
                   <img
@@ -244,30 +334,29 @@ export default function GarmentCatalog() {
 
             <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
               <div>
-                <dt className="font-medium">جنس</dt>
-                <dd className="text-muted">{selected.material}</dd>
+                <dt className="text-muted">جنس</dt>
+                <dd className="font-medium">{selected.material}</dd>
               </div>
               <div>
-                <dt className="font-medium">کاربرد / فصل</dt>
-                <dd className="text-muted">{selected.use}</dd>
+                <dt className="text-muted">کاربرد / فصل</dt>
+                <dd className="font-medium">{selected.use}</dd>
               </div>
               <div>
-                <dt className="font-medium">عرض</dt>
-                <dd className="text-muted">{selected.width === "—" ? "—" : `${selected.width} سانت`}</dd>
+                <dt className="text-muted">عرض</dt>
+                <dd className="font-medium">{selected.width === "—" ? "—" : `${selected.width} سانت`}</dd>
               </div>
               <div>
-                <dt className="font-medium">وزن</dt>
-                <dd className="text-muted">{selected.weight === "—" ? "—" : `${selected.weight} م/کیلو`}</dd>
+                <dt className="text-muted">وزن</dt>
+                <dd className="font-medium">{selected.weight === "—" ? "—" : `${selected.weight} م/کیلو`}</dd>
               </div>
               <div className="col-span-2">
-                <dt className="font-medium">رنگ</dt>
-                <dd className="text-muted">{selected.color}</dd>
+                <dt className="text-muted">رنگ</dt>
+                <dd className="font-medium">{selected.color}</dd>
               </div>
             </dl>
           </div>
-        </div >
-      )
-      }
+        </div>
+      )}
     </>
   );
 }
@@ -275,57 +364,38 @@ export default function GarmentCatalog() {
 function GarmentCard({ g, onOpen }: { g: Garment; onOpen: () => void }) {
   return (
     <article
-      className="cursor-pointer overflow-hidden rounded-2xl border border-line bg-white shadow-sm transition hover:shadow-md"
+      className="group cursor-pointer overflow-hidden rounded-2xl border border-line bg-white shadow-sm transition active:scale-[0.98] hover:shadow-md"
       onClick={onOpen}
     >
-      <div className="aspect-[4/3] bg-paper">
+      <div className="relative aspect-[4/3] bg-paper">
         {g.image ? (
           <img
             src={g.image}
             alt={`پارچه کد ${toPersianDigits(g.code)}`}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover transition group-hover:scale-105"
           />
         ) : (
           <div className="flex h-full items-center justify-center text-muted text-sm">
             تصویر موجود نیست
           </div>
         )}
+        <span className="absolute right-2 top-2 rounded-full bg-brand px-2.5 py-1 text-xs font-semibold text-white shadow">
+          کد {toPersianDigits(g.code)}
+        </span>
       </div>
-      <div className="p-4">
-        <div className="mb-2 flex items-center justify-between">
-          <span className="rounded-full bg-brand-soft px-2.5 py-0.5 text-xs font-medium text-brand">
-            کد {toPersianDigits(g.code)}
-          </span>
-        </div>
-        <h3 className="mb-1 text-base font-medium text-ink">{g.type}</h3>
-        <dl className="space-y-1 text-sm text-muted">
-          <div className="flex justify-between gap-2">
-            <dt>جنس</dt>
-            <dd className="text-ink">{g.material}</dd>
-          </div>
-          <div className="flex justify-between gap-2">
-            <dt>کاربرد</dt>
-            <dd className="text-ink">{g.use}</dd>
-          </div>
-          {g.width !== "—" && (
-            <div className="flex justify-between gap-2">
-              <dt>عرض</dt>
-              <dd className="text-ink">{g.width} سانت</dd>
-            </div>
-          )}
-          {g.weight !== "—" && (
-            <div className="flex justify-between gap-2">
-              <dt>وزن</dt>
-              <dd className="text-ink">{g.weight} م/کیلو</dd>
-            </div>
-          )}
+      <div className="p-3.5 sm:p-4">
+        <h3 className="mb-2 line-clamp-2 text-[15px] font-medium leading-snug text-ink">
+          {g.type}
+        </h3>
+        <div className="flex flex-wrap gap-1.5 text-xs">
+          <span className="rounded-md bg-paper px-2 py-0.5 text-muted">{g.material}</span>
           {g.color !== "—" && (
-            <div className="flex justify-between gap-2">
-              <dt>رنگ</dt>
-              <dd className="text-ink">{g.color}</dd>
-            </div>
+            <span className="rounded-md bg-brand-soft px-2 py-0.5 text-brand">{g.color}</span>
           )}
-        </dl>
+          {g.use !== "—" && (
+            <span className="rounded-md bg-paper px-2 py-0.5 text-muted">{g.use}</span>
+          )}
+        </div>
       </div>
     </article>
   );
