@@ -24,9 +24,11 @@ export default function GarmentCatalog() {
   const [view, setView] = useState<View>("cards");
   const [selected, setSelected] = useState<Garment | null>(null);
   const [mainSrc, setMainSrc] = useState<string>("");
+  const [zoomed, setZoomed] = useState(false);
   const [typeFilter, setTypeFilter] = useState<string>("");
   const [materialFilter, setMaterialFilter] = useState<string>("");
   const [filtersOpen, setFiltersOpen] = useState(false);
+
 
   const filtered = useMemo(() => {
     const query = q.trim().toLowerCase();
@@ -44,11 +46,13 @@ export default function GarmentCatalog() {
   function openModal(g: Garment) {
     setSelected(g);
     setMainSrc(g.image ? mediumImage(g.code) : "");
+    setZoomed(false);
   }
 
   function closeModal() {
     setSelected(null);
     setMainSrc("");
+    setZoomed(false);
   }
 
   function clearFilters() {
@@ -100,8 +104,8 @@ export default function GarmentCatalog() {
                     type="button"
                     onClick={() => setView("cards")}
                     className={`inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition ${view === "cards"
-                        ? "bg-brand text-white"
-                        : "bg-white text-ink border border-line"
+                      ? "bg-brand text-white"
+                      : "bg-white text-ink border border-line"
                       }`}
                     aria-pressed={view === "cards"}
                   >
@@ -112,8 +116,8 @@ export default function GarmentCatalog() {
                     type="button"
                     onClick={() => setView("table")}
                     className={`inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition ${view === "table"
-                        ? "bg-brand text-white"
-                        : "bg-white text-ink border border-line"
+                      ? "bg-brand text-white"
+                      : "bg-white text-ink border border-line"
                       }`}
                     aria-pressed={view === "table"}
                   >
@@ -302,26 +306,51 @@ export default function GarmentCatalog() {
               {selected.use !== "—" ? ` · ${selected.use}` : ""}
             </p>
 
-            <div className="mb-4 flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl bg-paper">
-              {mainSrc ? (
+            <div
+              className="relative mb-4 aspect-[4/3] overflow-hidden rounded-xl bg-paper transition-all duration-500"
+              style={
+                zoomed && mainSrc
+                  ? {
+                    backgroundImage: `url(${mainSrc})`,
+                    backgroundSize: "cover",
+                    // backgroundPosition: "center",
+                    width: "100%",
+                    height: "100%",
+                  }
+                  : undefined
+              }
+            >
+              {mainSrc && (
                 <img
                   src={mainSrc}
                   alt={`تصویر بزرگ پارچه کد ${toPersianDigits(selected.code)}`}
-                  className="max-h-full max-w-full object-contain"
+                  className={`h-full w-full object-contain transition-opacity duration-500 ${zoomed ? "opacity-0" : "opacity-100"
+                    }`}
                 />
-              ) : (
-                <span className="text-muted">تصویر موجود نیست</span>
+              )}
+              {!mainSrc && (
+                <span className="absolute inset-0 flex items-center justify-center text-muted">
+                  تصویر موجود نیست
+                </span>
               )}
             </div>
 
             {selected.image && (
               <div className="flex flex-col items-center gap-2">
-                <p className="text-xs text-muted">برای مشاهده تصویر بزرگ‌تر روی تصویر کوچک کلیک کنید</p>
+                <p className="text-xs text-muted">
+                  {zoomed
+                    ? "برای بازگشت به نمای عادی دوباره کلیک کنید"
+                    : "برای زوم روی تصویر کوچک کلیک کنید"}
+                </p>
                 <button
                   type="button"
-                  onClick={() => setMainSrc(mediumImage(selected.code))}
-                  className="overflow-hidden rounded-lg border-2 border-transparent hover:border-brand focus:border-brand focus:outline-none"
-                  aria-label="نمایش تصویر بزرگ"
+                  onClick={() => setZoomed((z) => !z)}
+                  className={`overflow-hidden rounded-lg border-2 transition ${zoomed
+                    ? "border-brand ring-2 ring-brand/30"
+                    : "border-transparent hover:border-brand"
+                    }`}
+                  aria-label={zoomed ? "بازگشت به نمای عادی" : "زوم تصویر"}
+                  aria-pressed={zoomed}
                 >
                   <img
                     src={selected.image}
