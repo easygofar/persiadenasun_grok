@@ -224,7 +224,7 @@ export default function GarmentCatalog() {
 
             {selected.image && (
               <div className="flex flex-col items-center gap-2">
-                <p className="text-xs text-muted">برای مشاهده تصویر بزرگ‌تر روی تصویر نگهدارید</p>
+                <p className="text-xs text-muted">برای مشاهده تصویر بزرگ‌تر روی این تصویر کلیک کنید</p>
                 <button
                   type="button"
                   onClick={() => onClickBgSrc(bgSrc)}
