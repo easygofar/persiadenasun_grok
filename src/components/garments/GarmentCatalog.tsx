@@ -25,10 +25,15 @@ export default function GarmentCatalog() {
   const [selected, setSelected] = useState<Garment | null>(null);
   const [mainSrc, setMainSrc] = useState<string>("");
   const [zoomed, setZoomed] = useState(false);
+
+  // Applied filters
   const [typeFilter, setTypeFilter] = useState<string>("");
   const [materialFilter, setMaterialFilter] = useState<string>("");
-  const [filtersOpen, setFiltersOpen] = useState(false);
 
+  // Pending (draft) filters inside the sheet
+  const [pendingType, setPendingType] = useState<string>("");
+  const [pendingMaterial, setPendingMaterial] = useState<string>("");
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const filtered = useMemo(() => {
     const query = q.trim().toLowerCase();
@@ -40,6 +45,17 @@ export default function GarmentCatalog() {
       return hay.includes(query);
     });
   }, [q, typeFilter, materialFilter]);
+
+  const pendingCount = useMemo(() => {
+    const query = q.trim().toLowerCase();
+    return garments.filter((g) => {
+      if (pendingType && g.type !== pendingType) return false;
+      if (pendingMaterial && g.material !== pendingMaterial) return false;
+      if (!query) return true;
+      const hay = `${g.code} ${g.type} ${g.material} ${g.use} ${g.color} ${g.width} ${g.weight}`.toLowerCase();
+      return hay.includes(query);
+    }).length;
+  }, [q, pendingType, pendingMaterial]);
 
   const activeFilters = [typeFilter, materialFilter].filter(Boolean).length;
 
@@ -55,9 +71,32 @@ export default function GarmentCatalog() {
     setZoomed(false);
   }
 
-  function clearFilters() {
+  function openFilters() {
+    setPendingType(typeFilter);
+    setPendingMaterial(materialFilter);
+    setFiltersOpen(true);
+  }
+
+  function closeFilters() {
+    setFiltersOpen(false);
+  }
+
+  function clearPending() {
+    setPendingType("");
+    setPendingMaterial("");
+  }
+
+  function applyFilters() {
+    setTypeFilter(pendingType);
+    setMaterialFilter(pendingMaterial);
+    setFiltersOpen(false);
+  }
+
+  function clearAllFilters() {
     setTypeFilter("");
     setMaterialFilter("");
+    setPendingType("");
+    setPendingMaterial("");
   }
 
   return (
@@ -87,7 +126,7 @@ export default function GarmentCatalog() {
               <div className="flex items-center justify-between gap-2">
                 <button
                   type="button"
-                  onClick={() => setFiltersOpen((v) => !v)}
+                  onClick={openFilters}
                   className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-white px-3 py-2 text-sm font-medium"
                 >
                   <Filter className="size-4" />
@@ -104,8 +143,8 @@ export default function GarmentCatalog() {
                     type="button"
                     onClick={() => setView("cards")}
                     className={`inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition ${view === "cards"
-                      ? "bg-brand text-white"
-                      : "bg-white text-ink border border-line"
+                        ? "bg-brand text-white"
+                        : "bg-white text-ink border border-line"
                       }`}
                     aria-pressed={view === "cards"}
                   >
@@ -116,8 +155,8 @@ export default function GarmentCatalog() {
                     type="button"
                     onClick={() => setView("table")}
                     className={`inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition ${view === "table"
-                      ? "bg-brand text-white"
-                      : "bg-white text-ink border border-line"
+                        ? "bg-brand text-white"
+                        : "bg-white text-ink border border-line"
                       }`}
                     aria-pressed={view === "table"}
                   >
@@ -126,75 +165,6 @@ export default function GarmentCatalog() {
                   </button>
                 </div>
               </div>
-
-              {filtersOpen && (
-                <div className="rounded-xl border border-line bg-white p-3 shadow-sm">
-                  <div className="mb-3 flex items-center justify-between">
-                    <span className="text-sm font-medium">فیلترها</span>
-                    {activeFilters > 0 && (
-                      <button
-                        type="button"
-                        onClick={clearFilters}
-                        className="text-xs text-brand hover:underline"
-                      >
-                        پاک کردن
-                      </button>
-                    )}
-                  </div>
-
-                  <div className="space-y-3">
-                    <div>
-                      <p className="mb-1.5 text-xs text-muted">نوع / بافت</p>
-                      <div className="flex flex-wrap gap-1.5">
-                        <button
-                          type="button"
-                          onClick={() => setTypeFilter("")}
-                          className={`rounded-full px-3 py-1 text-xs ${!typeFilter ? "bg-brand text-white" : "bg-paper text-ink"
-                            }`}
-                        >
-                          همه
-                        </button>
-                        {ALL_TYPES.map((t) => (
-                          <button
-                            key={t}
-                            type="button"
-                            onClick={() => setTypeFilter(t === typeFilter ? "" : t)}
-                            className={`rounded-full px-3 py-1 text-xs ${typeFilter === t ? "bg-brand text-white" : "bg-paper text-ink"
-                              }`}
-                          >
-                            {t}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <p className="mb-1.5 text-xs text-muted">جنس</p>
-                      <div className="flex flex-wrap gap-1.5">
-                        <button
-                          type="button"
-                          onClick={() => setMaterialFilter("")}
-                          className={`rounded-full px-3 py-1 text-xs ${!materialFilter ? "bg-brand text-white" : "bg-paper text-ink"
-                            }`}
-                        >
-                          همه
-                        </button>
-                        {ALL_MATERIALS.map((m) => (
-                          <button
-                            key={m}
-                            type="button"
-                            onClick={() => setMaterialFilter(m === materialFilter ? "" : m)}
-                            className={`rounded-full px-3 py-1 text-xs ${materialFilter === m ? "bg-brand text-white" : "bg-paper text-ink"
-                              }`}
-                          >
-                            {m}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
 
@@ -204,7 +174,7 @@ export default function GarmentCatalog() {
           </p>
 
           {view === "cards" ? (
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {filtered.map((g) => (
                 <GarmentCard key={g.code} g={g} onOpen={() => openModal(g)} />
               ))}
@@ -264,7 +234,7 @@ export default function GarmentCatalog() {
                   type="button"
                   onClick={() => {
                     setQ("");
-                    clearFilters();
+                    clearAllFilters();
                   }}
                   className="mt-3 text-sm text-brand hover:underline"
                 >
@@ -275,6 +245,112 @@ export default function GarmentCatalog() {
           )}
         </div>
       </section>
+
+      {/* Bottom sheet filter */}
+      {filtersOpen && (
+        <div className="fixed inset-0 z-[90] flex items-end justify-center sm:items-center">
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={closeFilters}
+          />
+          <div
+            className="relative w-full max-w-lg animate-slide-up rounded-t-2xl bg-white p-5 shadow-2xl sm:rounded-2xl sm:animate-none"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="filter-sheet-title"
+          >
+            <div className="mb-4 flex items-center justify-between">
+              <h2 id="filter-sheet-title" className="text-base font-medium">
+                فیلتر پارچه‌ها
+              </h2>
+              <button
+                type="button"
+                onClick={closeFilters}
+                className="rounded-full p-1.5 hover:bg-paper"
+                aria-label="بستن"
+              >
+                <X className="size-5" />
+              </button>
+            </div>
+
+            <div className="max-h-[50vh] space-y-4 overflow-y-auto">
+              <div>
+                <p className="mb-2 text-xs text-muted">نوع / بافت</p>
+                <div className="flex flex-wrap gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => setPendingType("")}
+                    className={`rounded-full px-3 py-1 text-xs ${!pendingType ? "bg-brand text-white" : "bg-paper text-ink"
+                      }`}
+                  >
+                    همه
+                  </button>
+                  {ALL_TYPES.map((t) => (
+                    <button
+                      key={t}
+                      type="button"
+                      onClick={() => setPendingType(t === pendingType ? "" : t)}
+                      className={`rounded-full px-3 py-1 text-xs ${pendingType === t ? "bg-brand text-white" : "bg-paper text-ink"
+                        }`}
+                    >
+                      {t}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <p className="mb-2 text-xs text-muted">جنس</p>
+                <div className="flex flex-wrap gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => setPendingMaterial("")}
+                    className={`rounded-full px-3 py-1 text-xs ${!pendingMaterial ? "bg-brand text-white" : "bg-paper text-ink"
+                      }`}
+                  >
+                    همه
+                  </button>
+                  {ALL_MATERIALS.map((m) => (
+                    <button
+                      key={m}
+                      type="button"
+                      onClick={() => setPendingMaterial(m === pendingMaterial ? "" : m)}
+                      className={`rounded-full px-3 py-1 text-xs ${pendingMaterial === m ? "bg-brand text-white" : "bg-paper text-ink"
+                        }`}
+                    >
+                      {m}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-5 flex gap-2">
+              <button
+                type="button"
+                onClick={clearPending}
+                className="flex-1 rounded-xl border border-line py-2.5 text-sm font-medium"
+              >
+                پاک کردن
+              </button>
+              <button
+                type="button"
+                onClick={closeFilters}
+                className="flex-1 rounded-xl border border-line py-2.5 text-sm font-medium"
+              >
+                بستن
+              </button>
+              <button
+                type="button"
+                onClick={applyFilters}
+                className="flex-[1.4] rounded-xl bg-brand py-2.5 text-sm font-semibold text-white"
+              >
+                جستجو ({toPersianDigits(pendingCount)})
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {selected && (
         <div
@@ -313,9 +389,7 @@ export default function GarmentCatalog() {
                   ? {
                     backgroundImage: `url(${mainSrc})`,
                     backgroundSize: "cover",
-                    // backgroundPosition: "center",
-                    width: "100%",
-                    height: "100%",
+                    backgroundPosition: "center",
                   }
                   : undefined
               }
@@ -346,8 +420,8 @@ export default function GarmentCatalog() {
                   type="button"
                   onClick={() => setZoomed((z) => !z)}
                   className={`overflow-hidden rounded-lg border-2 transition ${zoomed
-                    ? "border-brand ring-2 ring-brand/30"
-                    : "border-transparent hover:border-brand"
+                      ? "border-brand ring-2 ring-brand/30"
+                      : "border-transparent hover:border-brand"
                     }`}
                   aria-label={zoomed ? "بازگشت به نمای عادی" : "زوم تصویر"}
                   aria-pressed={zoomed}
