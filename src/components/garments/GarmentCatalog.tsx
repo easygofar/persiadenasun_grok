@@ -45,6 +45,14 @@ export default function GarmentCatalog() {
     //   setMainSrc(mediumImage(selected.code));
     // }
   }
+  function onClickBgSrc(value: boolean) {
+    setBgSrc(!value);
+    // if (value && selected) {
+    //   setMainSrc("");
+    // } else if (!value && selected) {
+    //   setMainSrc(mediumImage(selected.code));
+    // }
+  }
 
   function closeModal() {
     setSelected(null);
@@ -219,7 +227,7 @@ export default function GarmentCatalog() {
                 <p className="text-xs text-muted">برای مشاهده تصویر بزرگ‌تر روی تصویر نگهدارید</p>
                 <button
                   type="button"
-                  // onClick={() => setMainSrc(mediumImage(selected.code))}
+                  onClick={() => onClickBgSrc(bgSrc)}
                   onMouseEnter={() => onBgSrc(true)}
                   onMouseLeave={() => onBgSrc(false)}
                   className="overflow-hidden rounded-lg border-2 border-transparent ring-offset-2 hover:border-brand focus:border-brand focus:outline-none"
