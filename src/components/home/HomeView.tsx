@@ -22,10 +22,6 @@ const features = [
     icon: BadgeCheck,
     title: "نمایندگی رسمی برندها",
     text: "اوشیما، سیروبا، ریکوما و ساکورا",
-  }, {
-    icon: BadgeCheck,
-    title: "نمایندگی رسمی برندها",
-    text: "اوشیما، سیروبا، ریکوما و",
   },
   {
     icon: Headset,

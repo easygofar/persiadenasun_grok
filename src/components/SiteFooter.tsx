@@ -81,6 +81,13 @@ export default function SiteFooter() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link className={link} href="/products/sakura/">
+                <span dir="ltr">Sakura</span>
+                <span className="text-white/40"> · </span>
+                نخ ساکورا
+              </Link>
+            </li>
           </ul>
         </nav>
 

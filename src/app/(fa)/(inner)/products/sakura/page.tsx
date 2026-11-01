@@ -8,7 +8,7 @@ import { SITE, links } from "@/lib/site";
 export const metadata: Metadata = {
     title: "نخ ساکورا | گلدوزی، دوخت و نخ‌های خاص",
     description:
-        "پرشیا دنا سان عامل فروش نخ نخ ساکورا است. نخ گلدوزی پلی‌استر و ریون، متالیک با فیلم ژاپنی، نخ دوخت، بازیافتی، تنسل و نخ‌های خاص، با عکس و مشخصات هر سری.",
+        "پرشیا دنا سان عامل فروش نخ ساکورا است. نخ گلدوزی پلی‌استر و ریون، متالیک با فیلم ژاپنی، نخ دوخت، بازیافتی، تنسل و نخ‌های خاص، با عکس و مشخصات هر سری.",
     alternates: {
         canonical: "/products/sakura/",
         languages: { "fa-IR": "/products/sakura/", "x-default": "/products/sakura/" },
