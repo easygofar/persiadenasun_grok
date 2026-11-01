@@ -21,6 +21,10 @@ const features = [
   {
     icon: BadgeCheck,
     title: "نمایندگی رسمی برندها",
+    text: "اوشیما، سیروبا، ریکوما و ساکورا",
+  }, {
+    icon: BadgeCheck,
+    title: "نمایندگی رسمی برندها",
     text: "اوشیما، سیروبا، ریکوما و",
   },
   {
@@ -68,6 +72,7 @@ const tags = [
   "اتو مخزن‌دار فلت",
   "نرم‌افزار طراحی الگو",
   "بهینه‌سازی خط تولید",
+  "نخ گلدوزی ساکورا",
   "چرخ خیاطی صنعتی",
   "ماشین گلدوزی",
   "دستگاه برش",
@@ -99,9 +104,8 @@ export default function HomeView() {
             </h1>
             <p className="mt-5  text-sm leading-8 text-white/75 md:text-base">
               نمایندگی رسمی برندهای معتبر جهان؛ اوشیما، سیروبا و ریکوما
-              به همراه تولید پارچه‌های تخصصی برند آرشید. مشاوره، نصب و پشتیبانی
-              فنی کامل خط تولید شما.
-            </p>
+              به همراه تولید پارچه‌های تخصصی برند آرشید و عرضه نخ گلدوزی و دوخت
+              نخ ساکورا. مشاوره، نصب و پشتیبانی فنی کامل خط تولید شما.            </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link href="/products/" className="btn btn-brand">
                 مشاهده محصولات
@@ -320,7 +324,42 @@ export default function HomeView() {
           />
         </div>
       </section>
-
+      <section className="border-t border-line bg-white py-16 md:py-20" aria-labelledby="sakura-heading">
+        <div className="wrap grid items-center gap-8 lg:grid-cols-2">
+          <div>
+            <p className="text-sm font-semibold text-brand">نخ گلدوزی و دوخت</p>
+            <h2 id="sakura-heading" className="font-display mt-2 text-3xl text-navy md:text-4xl">
+              نخ ساکورا عامل فروش پرشیا دنا سان
+            </h2>
+            <p className="mt-4 text-sm leading-8 text-muted md:text-base">
+              نخ گلدوزی پلی‌استر و ریون، نخ متالیک با فیلم ژاپنی، نخ دوخت، نخ
+              بازیافتی، الیاف تنسل و نخ‌های خاص ساکورا. هر سری با عکس، توضیح و
+              جدول مشخصات در کاتالوگ سایت آمده است.
+            </p>
+            <ul className="mt-5 flex flex-wrap gap-2">
+              {["پلی‌استر", "ریون", "متالیک", "نخ دوخت", "بازیافتی", "تنسل", "نخ خاص"].map((f) => (
+                <li
+                  key={f}
+                  className="rounded-full border border-[#f3c3a4] bg-paper px-4 py-1.5 text-sm text-navy"
+                >
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <Link href="/products/sakura/" className="btn btn-navy mt-6">
+              مشاهده نخ‌های ساکورا
+              <span aria-hidden="true">‹</span>
+            </Link>
+          </div>
+          <img
+            src="/images/sakura/hero-cones.jpg"
+            alt="بوبین‌های رنگی نخ گلدوزی نخ ساکورا"
+            width={900}
+            height={520}
+            className="h-auto w-full rounded-[28px] object-cover shadow-lg"
+          />
+        </div>
+      </section>
       <section className="bg-white py-16 md:py-20" aria-labelledby="contact-heading">
         <div className="wrap">
           <p className="text-center text-sm font-semibold text-brand">راه‌های ارتباطی</p>

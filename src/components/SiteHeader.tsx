@@ -82,6 +82,15 @@ export default function SiteHeader() {
                             ))}
                             <li>
                               <Link
+                                href="/products/sakura/"
+                                className="block rounded-xl px-3 py-2.5 hover:bg-paper"
+                              >
+                                <span className="block text-sm font-semibold text-ink">نخ ساکورا</span>
+                                <span className="block text-xs text-muted">نخ گلدوزی و دوخت</span>
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
                                 href="/products/"
                                 className="mt-1 block rounded-xl bg-brand-soft px-3 py-2.5 text-center text-sm font-semibold text-brand"
                               >

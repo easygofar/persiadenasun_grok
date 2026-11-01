@@ -61,6 +61,8 @@ export const organizationNode = {
     "ماشین‌آلات نساجی",
     "دستگاه برش و پهن‌کن پارچه",
     "پارچه ژاکارد گردباف",
+    "نخ گلدوزی ساکورا",
+    "نخ دوخت صنعتی",
   ],
   brand: BRANDS.map((b) => ({ "@type": "Brand", name: b.name })),
   contactPoint: [

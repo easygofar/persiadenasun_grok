@@ -19,8 +19,8 @@ export default function SiteFooter() {
           <BrandLogo />
           <p className="mt-4 max-w-sm text-sm leading-8 text-white/70">
             پرشیا دنا سان؛ نیم قرن تأمین ماشین‌آلات نساجی و چرخ خیاطی صنعتی در
-            ایران، نمایندگی رسمی برندهای معتبر جهانی و تولیدکننده پارچه‌های
-            آرشید.
+            ایران، نمایندگی رسمی برندهای معتبر جهانی، تولیدکننده پارچه‌های
+            آرشید و عامل فروش نخ ساکورا.
           </p>
           <div className="mt-5 flex gap-2">
             <Social href={links.instagram} label="اینستاگرام">

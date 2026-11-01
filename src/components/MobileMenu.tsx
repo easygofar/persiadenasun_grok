@@ -81,6 +81,15 @@ export default function MobileMenu() {
                 </li>
               ))}
             </ul>
+            <li className="mt-1 border-b border-white/15">
+              <Link
+                href="/products/sakura/"
+                onClick={close}
+                className="block rounded-xl px-3 py-2 text-white/85"
+              >
+                نخ ساکورا
+              </Link>
+            </li>
             <a
               href={links.mobile}
               className="btn btn-brand mt-6 w-full"

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { products } from "@/data";
+import { threads } from "@/data/sakura";
 import { BRANDS, SITE } from "@/lib/site";
 
 // Required for `output: "export"`.
@@ -19,6 +20,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       path: "/products/video/",
       priority: 0.5,
+      changeFrequency: "monthly" as const,
+    },
+    {
+      path: "/products/sakura/",
+      priority: 0.85,
       changeFrequency: "monthly" as const,
     },
   ].map(({ path, priority, changeFrequency }) => ({
@@ -46,5 +52,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       })),
   );
 
-  return [...staticPages, ...brandPages, ...productPages];
+  const sakuraPages: MetadataRoute.Sitemap = threads.map((t) => ({
+    url: url(`/products/sakura/${t.slug}/`),
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...brandPages, ...productPages, ...sakuraPages];
 }
