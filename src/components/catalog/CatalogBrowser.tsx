@@ -126,7 +126,7 @@ export default function CatalogBrowser({
             </p>
           ) : (
             <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {shown.map((p) => {
+              {shown.sort(({ orderInSite: a }, { orderInSite: b }) => +(a) - (+(b))).map((p) => {
                 const img = thumbOf(p.images?.[0] || "");
                 const href = `/products/${p.brand.toLowerCase()}/${p.id}/`;
                 return (

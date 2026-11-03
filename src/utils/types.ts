@@ -10,6 +10,7 @@ export interface Thumbs {
 
 export interface Product {
   id: string;
+  orderInSite: string;
   name: string;
   title: string;
   category?: string;
