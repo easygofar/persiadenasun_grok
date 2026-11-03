@@ -63,7 +63,6 @@ export default function CatalogBrowser({
   }, [list, q, initialBrand]);
 
   const shown = matched.slice(0, limit);
-
   return (
     <>
       <PageHero
