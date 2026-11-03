@@ -181,6 +181,26 @@ export default function ProductView(props: Product) {
           </div>
         </div>
 
+        {images.length > 1 ? (
+          <section id="gallery" className="mt-8 mb-6">
+            <h2 className="text-center text-sm md:text-2xl font-semibold text-brand">
+              گالری تصاویر بیشتر
+            </h2>
+            <ul className="mt-4 flex flex-wrap justify-center gap-3">
+              {images.map((file) => {
+                const img = filePair(file);
+                return (
+                  <li key={file} className="card grid size-28 place-items-center p-2">
+                    <a href={img.full} target="_blank" rel="noopener noreferrer">
+                      <img src={img.thumb} alt="" className="max-h-24 w-auto object-contain" />
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        ) : null}
+
         {props.detail?.length ? (
           <section className="mt-12" aria-labelledby="spec-heading">
             <div className="mb-4 flex items-center justify-between">
@@ -250,23 +270,7 @@ export default function ProductView(props: Product) {
           </section>
         ) : null}
 
-        {images.length > 1 ? (
-          <section id="gallery" className="mt-8 mb-6">
-            <h2 className="text-center text-sm font-semibold text-brand">
-              گالری تصاویر بیشتر
-            </h2>
-            <ul className="mt-4 flex flex-wrap justify-center gap-3">
-              {images.map((file) => {
-                const img = filePair(file);
-                return (
-                  <li key={file} className="card grid size-28 place-items-center p-2">
-                    <img src={img.thumb} alt="" className="max-h-24 w-auto object-contain" />
-                  </li>
-                );
-              })}
-            </ul>
-          </section>
-        ) : null}
+
       </div>
     </article>
   );
