@@ -94,7 +94,7 @@ export default async function SakuraThreadPage({
                             ))}
                         </div>
 
-                        <h2 className="font-display mt-6 text-xl text-navy">ویژگی‌ها</h2>
+                        {/* <h2 className="font-display mt-6 text-xl text-navy">ویژگی‌ها</h2>
                         <ul className="mt-2 space-y-2 text-sm leading-7 text-muted">
                             {t.points.map((p) => (
                                 <li key={p} className="flex gap-2">
@@ -111,7 +111,7 @@ export default async function SakuraThreadPage({
                                     {a}
                                 </li>
                             ))}
-                        </ul>
+                        </ul> */}
 
                         {t.spec ? (
                             <div className="mt-6 overflow-x-auto rounded-2xl border border-line bg-white">
@@ -158,8 +158,9 @@ export default async function SakuraThreadPage({
                                 key={img.src}
                                 src={img.src}
                                 alt={img.alt}
-                                className="w-full rounded-3xl bg-white object-cover"
+                                className="w-full rounded-3xl mb-4 bg-white object-cover border-b border-gray-400"
                             />
+
                         ))}
                     </div>
                 </div>

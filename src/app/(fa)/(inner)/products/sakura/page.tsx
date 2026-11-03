@@ -83,9 +83,7 @@ export default function SakuraPage() {
                             ))}
                         </dl>
                         <p className="mt-4 text-sm leading-7 text-muted">
-                            تحویل نمونه برای سفارش‌های استاندارد تا ۴۸ ساعت و تحویل عمده تا ۷۲ ساعت، از طرف کارخانه اعلام شده است.
-                            موجودی و قیمت در ایران را از پرشیا دنا سان بپرسید.
-                        </p>
+                            موجودی و قیمت روز محصولات در ایران را از پرشیا دنا سان استعلام بگیرید.                        </p>
                         <a href={links.whatsapp} className="btn btn-brand mt-5">
                             استعلام نخ ساکورا
                         </a>
