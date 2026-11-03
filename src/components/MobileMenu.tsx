@@ -2,12 +2,16 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, Phone, X } from "lucide-react";
+import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import { BRANDS, SITE, links, toFa } from "@/lib/site";
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
-  const close = () => setOpen(false);
+  const [sub, setSub] = useState(false);
+  const close = () => {
+    setOpen(false);
+    setSub(false);
+  };
 
   useEffect(() => {
     if (!open) return;
@@ -57,39 +61,69 @@ export default function MobileMenu() {
                 ["/products/video/", "ویدیوها"],
               ].map(([href, label]) => (
                 <li key={href} className="mt-1 border-b border-white/15">
-                  <Link
-                    href={href}
-                    onClick={close}
-                    className="block rounded-xl px-3 py-1 text-lg"
-                  >
-                    {label}
-                  </Link>
+                  {href === "/products/" ? (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => setSub((v) => !v)}
+                        aria-expanded={sub}
+                        aria-controls="mobile-products-sub"
+                        className="flex w-full items-center justify-between rounded-xl px-3 py-1 text-lg"
+                      >
+                        {label}
+                        <ChevronDown
+                          className={`size-5 transition-transform duration-300 ${sub ? "rotate-180" : ""}`}
+                          aria-hidden="true"
+                        />
+                      </button>
+                      <div
+                        id="mobile-products-sub"
+                        className={`grid transition-all duration-300 ease-in-out ${sub ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+                      >
+                        <ul className="overflow-hidden pr-4">
+                          {BRANDS.map((b) => (
+                            <li key={b.slug}>
+                              <Link
+                                href={`/products/${b.slug}/`}
+                                onClick={close}
+                                tabIndex={sub ? 0 : -1}
+                                className="block rounded-xl px-3 py-2 text-white/85"
+                              >
+                                {b.fa}
+                              </Link>
+                            </li>
+                          ))}
+                          <li>
+                            <Link
+                              href="/products/sakura/"
+                              onClick={close}
+                              tabIndex={sub ? 0 : -1}
+                              className="block rounded-xl px-3 py-2 text-white/85"
+                            >
+                              نخ ساکورا
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/products/"
+                              onClick={close}
+                              tabIndex={sub ? 0 : -1}
+                              className="block rounded-xl px-3 py-2 font-semibold text-brand"
+                            >
+                              مشاهده همه محصولات
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
+                    </>
+                  ) : (
+                    <Link href={href} onClick={close} className="block rounded-xl px-3 py-1 text-lg">
+                      {label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
-            <p className="mt-4 px-3 text-sm text-white/50">برندها</p>
-            <ul className="mt-1">
-              {BRANDS.map((b) => (
-                <li key={b.slug} className="mt-1 border-b border-white/15">
-                  <Link
-                    href={`/products/${b.slug}/`}
-                    onClick={close}
-                    className="block rounded-xl px-3 py-2 text-white/85"
-                  >
-                    {b.fa}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <li className="mt-1 border-b border-white/15">
-              <Link
-                href="/products/sakura/"
-                onClick={close}
-                className="block rounded-xl px-3 py-2 text-white/85"
-              >
-                نخ ساکورا
-              </Link>
-            </li>
             <a
               href={links.mobile}
               className="btn btn-brand mt-6 w-full"

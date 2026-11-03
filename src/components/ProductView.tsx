@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import { FaTelegram, FaWhatsapp } from "react-icons/fa6";
+import GalleryLightbox from "@/components/GalleryLightbox";
 import { products } from "@/data";
 import { SITE, links, toFa } from "@/lib/site";
 import type { Product } from "@/utils/types";
@@ -186,18 +187,10 @@ export default function ProductView(props: Product) {
             <h2 className="text-center text-sm md:text-2xl font-semibold text-brand">
               گالری تصاویر بیشتر
             </h2>
-            <ul className="mt-4 flex flex-wrap justify-center gap-3">
-              {images.map((file) => {
-                const img = filePair(file);
-                return (
-                  <li key={file} className="card grid size-28 place-items-center p-2">
-                    <a href={img.full} target="_blank" rel="noopener noreferrer">
-                      <img src={img.thumb} alt="" className="max-h-24 w-auto object-contain" />
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
+            <GalleryLightbox
+              items={images.map((f) => ({ ...filePair(f) }))}
+              label={`${props.name} ${props.brandFarsi} ${props.model}`}
+            />
           </section>
         ) : null}
 

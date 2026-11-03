@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Phone } from "lucide-react";
@@ -34,6 +35,11 @@ const items = [
 
 export default function SiteHeader() {
   const path = usePathname() || "/";
+  const [hideMenu, setHideMenu] = useState(false);
+  const closeMenu = () => {
+    setHideMenu(true);
+    (document.activeElement as HTMLElement | null)?.blur();
+  };
 
   return (
     <header className="sticky top-0 z-50">
@@ -48,7 +54,11 @@ export default function SiteHeader() {
                 {items.map((item) => {
                   const active = item.match(path);
                   return (
-                    <li key={item.href} className={item.menu ? "group relative" : ""}>
+                    <li
+                      key={item.href}
+                      className={item.menu ? "group relative" : ""}
+                      onMouseLeave={item.menu ? () => setHideMenu(false) : undefined}
+                    >
                       <Link
                         href={item.href}
                         aria-current={active ? "page" : undefined}
@@ -65,11 +75,12 @@ export default function SiteHeader() {
                         />
                       </Link>
                       {item.menu ? (
-                        <div className="invisible absolute top-full right-0 z-20 pt-4 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                        <div className={`${hideMenu ? "pointer-events-none !invisible !opacity-0" : ""} invisible absolute top-full right-0 z-20 pt-4 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100`}>
                           <ul className="w-72 rounded-2xl border border-line bg-white p-2 shadow-xl">
                             {BRANDS.map((b) => (
                               <li key={b.slug}>
                                 <Link
+                                  onClick={closeMenu}
                                   href={`/products/${b.slug}/`}
                                   className="block rounded-xl px-3 py-2.5 hover:bg-paper"
                                 >
@@ -82,6 +93,7 @@ export default function SiteHeader() {
                             ))}
                             <li>
                               <Link
+                                onClick={closeMenu}
                                 href="/products/sakura/"
                                 className="block rounded-xl px-3 py-2.5 hover:bg-paper"
                               >
@@ -91,6 +103,7 @@ export default function SiteHeader() {
                             </li>
                             <li>
                               <Link
+                                onClick={closeMenu}
                                 href="/products/"
                                 className="mt-1 block rounded-xl bg-brand-soft px-3 py-2.5 text-center text-sm font-semibold text-brand"
                               >
