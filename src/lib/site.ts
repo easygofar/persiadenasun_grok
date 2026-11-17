@@ -16,7 +16,7 @@ export const SITE = {
   telegram: "PersiaDenasun1",
   instagram: "persiadenasun",
   email: "info@persiadenasun.com",
-  emailAlt: "persiandenasun.com@gmail.com",
+  emailAlt: "persiadenasun.co@gmail.com",
   logo: "/icons/persiadenasun-logo-512x512.png",
   ogImage: "/images/og/og-home.jpg",
   enUrl: "https://persiadenasun.com/",

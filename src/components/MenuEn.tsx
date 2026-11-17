@@ -124,7 +124,7 @@ export default function EnglishMenu() {
                             </span>
 
                             <li className="border-b pb-2 text-center hover:text-blue-400 border-gray-300">
-                                <Link href="mailto:persiandenasun.com@gmail.com">Email</Link>
+                                <Link href="mailto:persiadenasun.co@gmail.com">Email</Link>
                             </li>
                             <li className="border-b pb-2 text-center hover:text-blue-700 border-gray-300">
                                 <Link href="https://wa.me/989101818197">Whatsapp</Link>
@@ -306,7 +306,7 @@ export default function EnglishMenu() {
                                     {isDropdownContactOpen && (
                                         <ul className="mx-4 mt-2 space-y-4 flex flex-col p-2">
                                             <li>
-                                                <MenuLink href="mailto:persiandenasun.com@gmail.com">
+                                                <MenuLink href="mailto:persiadenasun.co@gmail.com">
                                                     Email
                                                 </MenuLink>
                                             </li>

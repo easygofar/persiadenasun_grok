@@ -139,7 +139,7 @@ export default function ArabicMenu() {
                                 <PiCaretUpFill fill="white" size={20} />
                             </span>
                             <li className="border-b pb-2 hover:text-blue-400 border-gray-300">
-                                <Link href="mailto:persiandenasun.com@gmail.com">البريد الإلكتروني</Link>
+                                <Link href="mailto:persiadenasun.co@gmail.com">البريد الإلكتروني</Link>
                             </li>
                             <li className="border-b pb-2 hover:text-blue-700 border-gray-300">
                                 <Link href="https://wa.me/989101818197">واتساب</Link>
@@ -274,7 +274,7 @@ export default function ArabicMenu() {
                                     </button>
                                     {isDropdownContactOpen && (
                                         <ul className="mx-4 mt-2 space-y-4 flex flex-col p-2">
-                                            <MenuLink href="mailto:persiandenasun.com@gmail.com">
+                                            <MenuLink href="mailto:persiadenasun.co@gmail.com">
                                                 البريد الإلكتروني
                                             </MenuLink>
                                             <MenuLink href="https://wa.me/989101818197">

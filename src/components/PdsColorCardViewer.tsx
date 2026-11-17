@@ -28,7 +28,7 @@ export default function PdsColorCardViewer() {
             <input id="thread-search" type="search" inputMode="numeric" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="مثلاً ۲۱۶۹" className="w-full rounded-xl border border-line bg-white px-4 py-3 text-navy outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/20" /> */}
           </div>
         </div>
-        <p className="mt-5 text-sm text-muted" aria-live="polite">{matchingColors.length.toLocaleString("fa-IR")} رنگ نمایش داده می‌شود</p>
+        <p className="mt-5 text-sm text-muted" aria-live="polite">{matchingColors.length.toLocaleString("fa-IR")} رنگ برای انتخاب:</p>
         {matchingColors.length ? (
           <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
             {matchingColors.map(({ code, image }) => (
