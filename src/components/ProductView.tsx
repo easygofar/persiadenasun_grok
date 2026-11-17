@@ -82,7 +82,7 @@ export default function ProductView(props: Product) {
             {props.brandFarsi}
           </p>
           <h1 className="font-display mt-4 text-3xl md:text-5xl">
-            {props.name} <span dir="ltr">{props.model}</span>
+            {props.name} <p dir="ltr">{props.model}</p>
           </h1>
         </div>
       </header>
@@ -109,7 +109,7 @@ export default function ProductView(props: Product) {
               {props.brand.toUpperCase()}
             </p>
             <h2 className="font-display mt-1 text-3xl text-navy">
-              {props.name} <span dir="ltr">{props.model}</span>
+              {props.name} <p dir="ltr">{props.model}</p>
             </h2>
             <dl className="mt-5 space-y-2 text-sm">
               <div className="flex items-center justify-between rounded-xl bg-paper px-4 py-3">

@@ -62,6 +62,7 @@ const cards = [
     value: SITE.emailAlt,
     href: links.mailAlt,
     icon: <Mail className="size-5" />,
+    style: "mt-1 block text-xs lg:text-base sm:text-sm font-semibold text-navy"
   },
 ];
 
@@ -83,7 +84,7 @@ export default function ContactUs() {
                 <a href={c.href} className="card flex items-center justify-between gap-4 p-5 hover:border-brand/30">
                   <span>
                     <span className="block text-xs text-faint">{c.label}</span>
-                    <span className="mt-1 block text-base font-semibold text-navy" dir="ltr">
+                    <span className={c.style || `mt-1 block text-base font-semibold text-navy`} dir="ltr">
                       {c.value}
                     </span>
                   </span>

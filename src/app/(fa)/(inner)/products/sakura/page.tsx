@@ -56,7 +56,7 @@ export default function SakuraPage() {
         <>
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             <PageHero
-                kicker="عامل فروش نخ ساکورا"
+                kicker="نماینده رسمی فروش نخ ساکورا"
                 title="نخ گلدوزی و دوخت ساکورا"
                 lede="پرشیا دنا سان نخ‌های ساکورا را عرضه می‌کند؛ از گلدوزی پلی‌استر و ریون تا متالیک با فیلم ژاپنی، نخ دوخت، بازیافتی، تنسل و نخ‌های خاص."
             />
@@ -95,6 +95,15 @@ export default function SakuraPage() {
                         height={640}
                         className="w-full rounded-3xl object-cover"
                     />
+                </div>
+            </section>
+
+            <section className="bg-white pb-8">
+                <div className="wrap">
+                    <Link href="/products/pds-threads/" className="group flex flex-col gap-3 border-r-4 border-brand bg-paper px-5 py-5 transition hover:bg-brand-soft sm:flex-row sm:items-center sm:justify-between sm:px-7">
+                        <span><span className="block text-xs font-bold text-brand">مجموعه اختصاصی پرشیا دنا سان</span><span className="mt-1 block font-display text-xl text-navy">به دنبال نخ‌های گلدوزی پرشیا دنا سان هستید؟</span><span className="mt-1 block text-sm text-muted">کارت رنگ رسمی را ببینید و فایل PDF را دریافت کنید.</span></span>
+                        <span className="shrink-0 font-semibold text-brand">نخ‌های گلدوزی پرشیا دنا سان ←</span>
+                    </Link>
                 </div>
             </section>
 

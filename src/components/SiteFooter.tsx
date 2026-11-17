@@ -75,17 +75,24 @@ export default function SiteFooter() {
             {BRANDS.map((b) => (
               <li key={b.slug}>
                 <Link className={link} href={`/products/${b.slug}/`}>
-                  <span dir="ltr">{b.name}</span>
-                  <span className="text-white/40"> · </span>
+                  {/* <span dir="ltr">{b.name}</span>
+                  <span className="text-white/40"> · </span> */}
                   {b.fa}
                 </Link>
               </li>
             ))}
             <li>
               <Link className={link} href="/products/sakura/">
-                <span dir="ltr">Sakura</span>
-                <span className="text-white/40"> · </span>
+                {/* <span dir="ltr">Sakura</span>
+                <span className="text-white/40"> · </span> */}
                 نخ ساکورا
+              </Link>
+            </li>
+            <li>
+              <Link className={link} href="/products/pds-threads/">
+                {/* <span dir="ltr">PDS</span>
+                <span className="text-white/40"> · </span> */}
+                نخ گلدوزی پرشیا دنا سان
               </Link>
             </li>
           </ul>

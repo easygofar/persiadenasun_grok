@@ -100,12 +100,14 @@ export default function HomeView() {
             </h1>
             <p className="mt-5  text-sm leading-8 text-white/75 md:text-base">
               نمایندگی رسمی برندهای معتبر جهان؛ اوشیما، سیروبا و ریکوما
-              به همراه تولید پارچه‌های تخصصی برند آرشید و عرضه نخ گلدوزی و دوخت
-              نخ ساکورا. مشاوره، نصب و پشتیبانی فنی کامل خط تولید شما.            </p>
+              به همراه تولید پارچه‌های تخصصی برند آرشید، نخ های گلدوزی پرشیا دنا سان و نماینده رسمی فروش انواع نخ های دوخت برند ساکورا. مشاوره، نصب و پشتیبانی فنی کامل خط تولید شما.            </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link href="/products/" className="btn btn-brand">
                 مشاهده محصولات
                 <span aria-hidden="true">‹</span>
+              </Link>
+              <Link href="/products/pds-threads/" className="btn btn-ghost">
+                نخ‌های گلدوزی پرشیا دنا سان
               </Link>
               <Link href="/contact-us/" className="btn btn-ghost">
                 مشاوره رایگان

@@ -102,6 +102,12 @@ export default function SiteHeader() {
                               </Link>
                             </li>
                             <li>
+                              <Link onClick={closeMenu} href="/products/pds-threads/" className="block rounded-xl px-3 py-2.5 hover:bg-paper">
+                                <span className="block text-sm font-semibold text-ink">نخ‌های پرشیا دنا سان</span>
+                                <span className="block text-xs text-muted"> نخ های گلدوزی</span>
+                              </Link>
+                            </li>
+                            <li>
                               <Link
                                 onClick={closeMenu}
                                 href="/products/"

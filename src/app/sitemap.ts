@@ -23,6 +23,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
     },
     {
+      path: "/products/pds-threads/",
+      priority: 0.8,
+      changeFrequency: "monthly" as const,
+    },
+    {
       path: "/products/sakura/",
       priority: 0.85,
       changeFrequency: "monthly" as const,

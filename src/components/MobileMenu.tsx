@@ -104,6 +104,11 @@ export default function MobileMenu() {
                             </Link>
                           </li>
                           <li>
+                            <Link href="/products/pds-threads/" onClick={close} tabIndex={sub ? 0 : -1} className="block rounded-xl px-3 py-2 text-white/85">
+                              نخ‌های پرشیا دنا سان · کارت رنگ PDS
+                            </Link>
+                          </li>
+                          <li>
                             <Link
                               href="/products/"
                               onClick={close}
