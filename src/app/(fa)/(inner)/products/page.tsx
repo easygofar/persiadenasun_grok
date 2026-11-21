@@ -49,6 +49,7 @@ export default function ProductsPage() {
       <CatalogBrowser
         title="محصولات پرشیا دنا سان"
         lede="چرخ‌های خیاطی صنعتی سیروبا، ماشین‌های گلدوزی ریکوما، تجهیزات اوشیما، دستگاه برش و پارچه‌های گردباف آرشید"
+        showThreadLinks
       />
     </>
   );

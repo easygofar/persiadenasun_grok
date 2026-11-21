@@ -34,8 +34,8 @@ export const sakuraIntro = {
   headline: "نخ گلدوزی و دوخت",
   mission: "Enhance Textile Value",
   href: "/products/sakura/",
-  image: "/images/sakura/hero-cones.jpg",
-  building: "/images/sakura/hq-building.jpg",
+  image: "/images/sakura/hero-cones.webp",
+  building: "/images/sakura/hq-building.webp",
   warehouse: "/images/sakura/warehouse.jpg",
 };
 

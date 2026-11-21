@@ -25,9 +25,9 @@ export default function PDSThreadsPage() {
             <p className="text-sm font-semibold text-brand">پرشیا دنا سان · مجموعه نخ</p>
             <h1 className="font-display mt-3 max-w-2xl text-4xl leading-tight text-navy md:text-5xl">نخ‌های گلدوزی<br className="hidden sm:block" /> پرشیا دنا سان</h1>
             <p className="mt-5 max-w-2xl text-base leading-8 text-muted md:text-lg">رنگ، بخش مهمی از هویت هر طرح گلدوزی است. کارت رنگ نخ های گلدوزی پرشیا دنا سان را برای مقایسه طیف‌ها ببینید و کد دقیق را مستقیماً از مرجع اصلی بردارید.</p>
-            {/* <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-7 flex flex-wrap gap-3">
               <a className="btn btn-brand" href="/downloads/PDS-COLOR-CARD.pdf" download>دانلود فایل رنگ نخ های گلدوزی</a>
-            </div> */}
+            </div>
           </div>
           <div className="relative mx-auto aspect-[746/767] w-full max-w-md overflow-hidden rounded-2xl bg-white/60">
             <Image

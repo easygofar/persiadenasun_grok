@@ -21,22 +21,26 @@ const features = [
   {
     icon: BadgeCheck,
     title: "نمایندگی رسمی برندها",
-    text: "اوشیما، سیروبا، ریکوما و ساکورا",
+    text: "اوشیما، سیروبا، ریکوما، نخ ساکورا ",
+    link: "/products/"
   },
   {
     icon: Headset,
     title: "پشتیبانی فنی تخصصی",
     text: "نصب، آموزش و خدمات پس از فروش",
+    link: "/contact-us/"
   },
   {
     icon: Truck,
     title: "تحویل سریع",
     text: "ارسال به سراسر ایران",
+    link: "/"
   },
   {
     icon: ShieldCheck,
     title: "ضمانت اصالت کالا",
     text: "تأمین مستقیم از برندهای رسمی",
+    link: "/"
   },
 ];
 
@@ -156,19 +160,20 @@ export default function HomeView() {
 
         <div className="wrap grid grid-cols-2 gap-3 pb-14 pt-16 lg:grid-cols-4">
           {features.map((f) => (
-            <div
-              key={f.title}
-              className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4"
+            <Link href={f.link} key={f.title}
             >
-              <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-white/10 text-brand">
-                <f.icon className="size-5" aria-hidden="true" />
-              </span>
-              <span>
-                <span className="block text-sm font-semibold">{f.title}</span>
-                <span className="block text-xs leading-6 text-white/55">{f.text}</span>
-              </span>
-            </div>
-          ))}
+              <div
+                className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4"
+              >
+                <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-white/10 text-brand">
+                  <f.icon className="size-5" aria-hidden="true" />
+                </span>
+                <span>
+                  <span className="block text-sm font-semibold">{f.title}</span>
+                  <span className="block text-xs leading-6 text-white/55">{f.text}</span>
+                </span>
+              </div>
+            </Link>))}
         </div>
       </section>
 
@@ -240,6 +245,24 @@ export default function HomeView() {
                 </Link>
               </article>
             ))}
+            <article className="card relative flex flex-col p-4">
+              <Link href="/products/sakura/" className="grid h-36 place-items-center">
+                <img src="/images/sakura/hero-cones.webp" alt="بوبین‌های نخ ساکورا" width={220} height={140} className="max-h-32 w-auto object-contain" />
+              </Link>
+              <p className="mt-2 text-xs font-bold tracking-wide text-brand" dir="ltr">SAKURA THREAD</p>
+              <h3 className="font-display text-2xl text-navy">نخ ساکورا</h3>
+              <p className="mt-1 flex-1 text-sm leading-7 text-muted">مجموعه نخ‌های گلدوزی و دوخت ساکورا.</p>
+              <Link href="/products/sakura/" className="mt-3 text-sm font-semibold text-brand">مشاهده محصولات ‹</Link>
+            </article>
+            <article className="card relative flex flex-col p-4">
+              <Link href="/products/pds-threads/" className="grid h-36 place-items-center">
+                <img src="/images/pds-threads/persiadenasun_thread.webp" alt="نخ‌های گلدوزی پرشیا دنا سان" width={220} height={140} className="max-h-32 w-auto object-contain" />
+              </Link>
+              <p className="mt-2 text-xs font-bold tracking-wide text-brand" dir="ltr">PDS THREAD</p>
+              <h3 className="font-display text-2xl text-navy">نخ پرشیا دنا سان (PDS)</h3>
+              <p className="mt-1 flex-1 text-sm leading-7 text-muted">نخ‌های گلدوزی پرشیا دنا سان.</p>
+              <Link href="/products/pds-threads/" className="mt-3 text-sm font-semibold text-brand">مشاهده محصولات ‹</Link>
+            </article>
           </div>
           <ul className="mt-8 flex flex-wrap justify-center gap-2">
             {tags.map((t) => (

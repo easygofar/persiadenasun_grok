@@ -164,7 +164,9 @@ summary:focus-visible {
 /* Hero section */
 .hero-image {
   background-image: url('/images/hero/hero-section.png');
-  /* background-repeat: 'false'; */
+  background-repeat: 'false';
+  background-size: cover;
+  background-position: center;
 }
 
 

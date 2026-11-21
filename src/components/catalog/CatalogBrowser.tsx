@@ -32,10 +32,12 @@ export default function CatalogBrowser({
   initialBrand = "",
   title,
   lede,
+  showThreadLinks = false,
 }: {
   initialBrand?: string;
   title: string;
   lede: string;
+  showThreadLinks?: boolean;
 }) {
   const router = useRouter();
   const [q, setQ] = useState("");
@@ -70,6 +72,20 @@ export default function CatalogBrowser({
         title={title}
         lede={lede}
       />
+      {showThreadLinks ? (
+        <section className="bg-white py-8" aria-label="نخ‌های گلدوزی و دوخت">
+          <div className="wrap grid gap-4 sm:grid-cols-2">
+            <Link href="/products/sakura/" className="card flex items-center gap-4 p-4">
+              <img src="/images/sakura/hero-cones.webp" alt="بوبین‌های نخ ساکورا" width={220} height={140} className="h-24 w-36 shrink-0 object-contain" />
+              <span><span className="block font-semibold text-navy">نخ ساکورا</span><span className="mt-1 block text-sm text-brand">مشاهده محصولات ‹</span></span>
+            </Link>
+            <Link href="/products/pds-threads/" className="card flex items-center gap-4 p-4">
+              <img src="/images/pds-threads/persiadenasun_thread.webp" alt="نخ‌های گلدوزی پرشیا دنا سان" width={220} height={140} className="h-24 w-36 shrink-0 object-contain" />
+              <span><span className="block font-semibold text-navy">نخ پرشیا دنا سان (PDS)</span><span className="mt-1 block text-sm text-brand">مشاهده محصولات ‹</span></span>
+            </Link>
+          </div>
+        </section>
+      ) : null}
       <section className="bg-paper py-10">
         <div className="wrap">
           <div className="flex flex-wrap justify-center gap-2">

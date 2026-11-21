@@ -127,7 +127,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fa" dir="rtl" className={`${vazir.variable} ${lalezar.variable}`}>
+    <html lang="fa" dir="rtl" data-scroll-behavior="smooth" className={`${vazir.variable} ${lalezar.variable}`}>
       <ScrollToTop />
       <head>
         <link rel="alternate" type="text/plain" href="/llms.txt" title="خلاصه سایت برای موتورهای پاسخ‌گو" />
